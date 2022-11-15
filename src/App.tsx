@@ -8,6 +8,9 @@ import {
 } from "@tanstack/react-router";
 import { useState } from "react";
 
+import Config from "./Config";
+import VideoOverlay from "./VideoOverlay";
+
 const routeConfig = createRouteConfig().createChildren((createRoute) => [
   createRoute({
     path: "/",
@@ -54,14 +57,6 @@ function Index() {
       </div>
     </div>
   );
-}
-
-function Config() {
-  return <div>Hello from Config!</div>;
-}
-
-function VideoOverlay() {
-  return <div>Hello from Video Overlay!</div>;
 }
 
 export default App;
