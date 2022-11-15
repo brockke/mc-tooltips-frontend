@@ -1,36 +1,67 @@
 import "./App.css";
 
+import {
+  createReactRouter,
+  createRouteConfig,
+  Outlet,
+  RouterProvider,
+} from "@tanstack/react-router";
 import { useState } from "react";
 
-import reactLogo from "./assets/react.svg";
+const routeConfig = createRouteConfig().createChildren((createRoute) => [
+  createRoute({
+    path: "/",
+    element: <Index />,
+  }),
+  createRoute({
+    path: "config",
+    element: <Config />,
+  }),
+  createRoute({
+    path: "video_overlay",
+    element: <VideoOverlay />,
+  }),
+]);
+
+const router = createReactRouter({ routeConfig });
 
 function App() {
+  return (
+    <>
+      <RouterProvider router={router}>
+        <div className="flex space-x-4">
+          <router.Link to="/">Home</router.Link>
+          <router.Link to="/config">Config</router.Link>
+          <router.Link to="/video_overlay">Video Overlay</router.Link>
+        </div>
+        <hr />
+        <Outlet />
+      </RouterProvider>
+    </>
+  );
+}
+
+function Index() {
   const [count, setCount] = useState(0);
 
   return (
     <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank" rel="noreferrer">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
       <h1>Vite + React</h1>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
         </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </div>
   );
+}
+
+function Config() {
+  return <div>Hello from Config!</div>;
+}
+
+function VideoOverlay() {
+  return <div>Hello from Video Overlay!</div>;
 }
 
 export default App;
