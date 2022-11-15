@@ -32,12 +32,6 @@ function App() {
   return (
     <>
       <RouterProvider router={router}>
-        <div className="flex space-x-4">
-          <router.Link to="/">Home</router.Link>
-          <router.Link to="/config">Config</router.Link>
-          <router.Link to="/video_overlay">Video Overlay</router.Link>
-        </div>
-        <hr />
         <Outlet />
       </RouterProvider>
     </>
