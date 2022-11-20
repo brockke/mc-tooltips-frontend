@@ -4,8 +4,8 @@ function VideoOverlay() {
   const ref = useRef(null);
 
   const [cursorPosition, setCursorPosition] = useState({ top: 0, left: 0 });
-  const onMouseMove = (e: any) =>
-    setCursorPosition({ top: e.screenY, left: e.screenX });
+  const onMouseMove = (e: React.MouseEvent) =>
+    setCursorPosition({ top: e.pageY, left: e.pageX + 20 });
   const [style, setStyle] = useState("invisible");
 
   return (
@@ -37,7 +37,9 @@ function VideoOverlay() {
       </div>
       <div style={{ position: "absolute", ...cursorPosition }}>
         <div className={style}>
-          <h1>MOVING</h1>
+          <div className="bg-blue-500">
+            <h1>MOVING</h1>
+          </div>
         </div>
       </div>
     </div>
