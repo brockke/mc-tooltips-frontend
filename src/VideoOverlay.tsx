@@ -1,12 +1,7 @@
-import useMouse from "@react-hook/mouse-position";
 import { useRef, useState } from "react";
 
 function VideoOverlay() {
   const ref = useRef(null);
-  const mouse = useMouse(ref, {
-    enterDelay: 100,
-    leaveDelay: 100,
-  });
 
   const [cursorPosition, setCursorPosition] = useState({ top: 0, left: 0 });
   const onMouseMove = (e: any) =>
