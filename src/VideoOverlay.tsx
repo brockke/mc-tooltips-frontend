@@ -3,9 +3,12 @@ import { useRef, useState } from "react";
 function VideoOverlay() {
   const ref = useRef(null);
 
-  const [cursorPosition, setCursorPosition] = useState({ top: 0, left: 0 });
+  const [cursorPosition, setCursorPosition] = useState({ bottom: 0, right: 0 });
   const onMouseMove = (e: React.MouseEvent) =>
-    setCursorPosition({ top: e.pageY, left: e.pageX + 20 });
+    setCursorPosition({
+      bottom: window.innerHeight - e.pageY,
+      right: window.innerWidth - e.pageX + 20,
+    });
   const [style, setStyle] = useState("invisible");
 
   return (
@@ -39,6 +42,9 @@ function VideoOverlay() {
         <div className={style}>
           <div className="bg-blue-500">
             <h1>MOVING</h1>
+            <h1>MOVING1</h1>
+            <h2>MOVING2</h2>
+            <h3>MOVING3</h3>
           </div>
         </div>
       </div>
