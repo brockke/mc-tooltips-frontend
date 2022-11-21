@@ -27,7 +27,7 @@
     "allowUnreachableCode": false,
     "noFallthroughCasesInSwitch": true,
   },
-  "include": ["src", "**/*.tsx", "**/*.js", "**/*.cjs", "**/*.mjs"],
+  "include": ["src", "**/*.tsx", "**/*.ts", "**/*.js", "**/*.cjs", "**/*.mjs"],
   "exclude": ["node_modules"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
