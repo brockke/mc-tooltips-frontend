@@ -7,34 +7,32 @@ function VideoOverlay() {
   const onMouseMove = (e: React.MouseEvent) =>
     setCursorPosition({
       bottom: window.innerHeight - e.pageY,
-      right: window.innerWidth - e.pageX + 20,
+      right: window.innerWidth - e.pageX + 5,
     });
   const [style, setStyle] = useState("invisible");
 
   return (
-    <div>
-      <div className="h-auto w-auto">
-        <div className="absolute bottom-0 bg-red-500" onMouseMove={onMouseMove}>
-          <div className="flex" ref={ref}>
-            <div
-              onMouseEnter={() => {
-                setStyle("visible");
-              }}
-              onMouseLeave={() => {
-                setStyle("invisible");
-              }}
-            >
-              <h1>Test1</h1>
-            </div>
-            <div>
-              <h1>Test2</h1>
-            </div>
-            <div>
-              <h1>Test3</h1>
-            </div>
-            <div>
-              <h1>Test4</h1>
-            </div>
+    <div className="grid h-screen place-items-center">
+      <div className="absolute bottom-0 bg-red-500" onMouseMove={onMouseMove}>
+        <div className="flex" ref={ref}>
+          <div
+            onMouseEnter={() => {
+              setStyle("visible");
+            }}
+            onMouseLeave={() => {
+              setStyle("invisible");
+            }}
+          >
+            <h1>Test1</h1>
+          </div>
+          <div>
+            <h1>Test2</h1>
+          </div>
+          <div>
+            <h1>Test3</h1>
+          </div>
+          <div>
+            <h1>Test4</h1>
           </div>
         </div>
       </div>
