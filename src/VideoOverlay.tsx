@@ -3,11 +3,11 @@ import { useRef, useState } from "react";
 function VideoOverlay() {
   const ref = useRef(null);
 
-  const [cursorPosition, setCursorPosition] = useState({ bottom: 0, right: 0 });
+  const [cursorPosition, setCursorPosition] = useState({ bottom: 0, left: 0 });
   const onMouseMove = (e: React.MouseEvent) =>
     setCursorPosition({
       bottom: window.innerHeight - e.pageY,
-      right: window.innerWidth - e.pageX + 5,
+      left: e.pageX + 10,
     });
   const [style, setStyle] = useState("invisible");
 
