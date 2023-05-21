@@ -1,39 +1,17 @@
 import "./App.css";
 
-import {
-  createReactRouter,
-  createRouteConfig,
-  Outlet,
-  RouterProvider,
-} from "@tanstack/react-router";
 import { useState } from "react";
+import { Route } from "wouter";
 
 import Config from "./Config";
 import VideoOverlay from "./VideoOverlay";
 
-const routeConfig = createRouteConfig().createChildren((createRoute) => [
-  createRoute({
-    path: "/",
-    element: <Index />,
-  }),
-  createRoute({
-    path: "config",
-    element: <Config />,
-  }),
-  createRoute({
-    path: "video_overlay",
-    element: <VideoOverlay />,
-  }),
-]);
-
-const router = createReactRouter({ routeConfig });
-
 function App() {
   return (
     <>
-      <RouterProvider router={router}>
-        <Outlet />
-      </RouterProvider>
+      <Route path="/config" component={Config} />
+      <Route path="/video_overlay" component={VideoOverlay} />
+      <Route path="/" component={Index} />
     </>
   );
 }
