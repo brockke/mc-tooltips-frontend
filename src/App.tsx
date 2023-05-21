@@ -9,9 +9,9 @@ import VideoOverlay from "./VideoOverlay";
 function App() {
   return (
     <>
+      <Route path="/" component={Index} />
       <Route path="/config" component={Config} />
       <Route path="/video_overlay" component={VideoOverlay} />
-      <Route path="/" component={Index} />
     </>
   );
 }
