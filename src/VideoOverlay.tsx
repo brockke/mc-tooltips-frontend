@@ -20,12 +20,13 @@ function VideoOverlay() {
 
   const gridItems = 36;
   const gridRowLength = 9;
-  const inventoryData: { index: number; title: string; data: string }[] =
-    Array.from({ length: gridItems }, (_, i) => ({
+  const inventoryData: { index: number; data: string }[] = Array.from(
+    { length: gridItems },
+    (_, i) => ({
       index: i,
-      title: "",
       data: "",
-    }));
+    })
+  );
   return (
     <div className="grid h-screen place-items-center">
       <div className={`grid grid-cols-${gridRowLength} gap-1`}>
@@ -37,9 +38,7 @@ function VideoOverlay() {
   );
 }
 
-const InventoryBox = (props: {
-  data: { index: number; title: string; data: string };
-}) => {
+const InventoryBox = (props: { data: { index: number; data: string } }) => {
   return <div className="p-8 bg-rose-800">{props.data.index}</div>;
 };
 
