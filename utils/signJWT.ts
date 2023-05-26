@@ -2,14 +2,13 @@ import * as dotenv from "dotenv";
 import jwt from "jsonwebtoken";
 dotenv.config();
 
-// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-const sharedSecret = process.env.JWT_SECRET!;
-// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-const broadcasterId = process.env.JWT_BROADCASTER_ID!;
+const sharedSecret = process.env.JWT_SECRET;
+const broadcasterId = process.env.JWT_BROADCASTER_ID ?? 0;
 // console.log(sharedSecret);
 // console.log(broadcasterId);
 
 const makeJWT = function () {
+  if (sharedSecret == undefined) return;
   const secret = Buffer.from(sharedSecret, "base64");
   const jwt_payload = {
     exp: Math.floor(new Date().getTime() / 1000) + 2 * 60 * 60,
