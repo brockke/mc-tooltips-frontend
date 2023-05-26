@@ -1,16 +1,6 @@
 import { useRef, useState } from "react";
 
 function VideoOverlay() {
-  const ref = useRef(null);
-
-  const [cursorPosition, setCursorPosition] = useState({ bottom: 0, left: 0 });
-  const onMouseMove = (e: React.MouseEvent) =>
-    setCursorPosition({
-      bottom: window.innerHeight - e.pageY,
-      left: e.pageX + 10,
-    });
-  const [style, setStyle] = useState("invisible");
-
   // start listening to PubSub events
   window.Twitch.ext.listen(
     "broadcast",
@@ -28,43 +18,29 @@ function VideoOverlay() {
     }
   );
 
+  const gridItems = 36;
+  const gridRowLength = 9;
+  const inventoryData: { index: number; title: string; data: string }[] =
+    Array.from({ length: gridItems }, (_, i) => ({
+      index: i,
+      title: "",
+      data: "",
+    }));
   return (
     <div className="grid h-screen place-items-center">
-      <div className="absolute bottom-0 bg-red-500" onMouseMove={onMouseMove}>
-        <div className="flex" ref={ref}>
-          <div
-            onMouseEnter={() => {
-              setStyle("visible");
-            }}
-            onMouseLeave={() => {
-              setStyle("invisible");
-            }}
-          >
-            <h1>Test1</h1>
-          </div>
-          <div>
-            <h1>Test2</h1>
-          </div>
-          <div>
-            <h1>Test3</h1>
-          </div>
-          <div>
-            <h1>Test4</h1>
-          </div>
-        </div>
-      </div>
-      <div style={{ position: "absolute", ...cursorPosition }}>
-        <div className={style}>
-          <div className="bg-blue-500">
-            <h1>MOVING</h1>
-            <h1>MOVING1</h1>
-            <h2>MOVING2</h2>
-            <h3>MOVING3</h3>
-          </div>
-        </div>
+      <div className={`grid grid-cols-${gridRowLength} gap-1`}>
+        {inventoryData.map((item) => (
+          <InventoryBox key={item.index} data={item} />
+        ))}
       </div>
     </div>
   );
 }
+
+const InventoryBox = (props: {
+  data: { index: number; title: string; data: string };
+}) => {
+  return <div className="p-8 bg-rose-800">{props.data.index}</div>;
+};
 
 export default VideoOverlay;
