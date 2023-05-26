@@ -1,6 +1,16 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 function VideoOverlay() {
+  const gridItems = 36;
+  const gridRowLength = 9;
+  const inventoryData: { index: number; data: string }[] = Array.from(
+    { length: gridItems },
+    (_, i) => ({
+      index: i,
+      data: "",
+    })
+  );
+
   // start listening to PubSub events
   window.Twitch.ext.listen(
     "broadcast",
@@ -18,15 +28,6 @@ function VideoOverlay() {
     }
   );
 
-  const gridItems = 36;
-  const gridRowLength = 9;
-  const inventoryData: { index: number; data: string }[] = Array.from(
-    { length: gridItems },
-    (_, i) => ({
-      index: i,
-      data: "",
-    })
-  );
   return (
     <div className="grid h-screen place-items-center">
       <div className={`grid grid-cols-${gridRowLength} gap-1`}>
