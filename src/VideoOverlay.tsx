@@ -1,5 +1,3 @@
-import { useEffect, useRef, useState } from "react";
-
 function VideoOverlay() {
   const gridItems = 36;
   const gridRowLength = 9;
