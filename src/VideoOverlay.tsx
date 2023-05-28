@@ -21,10 +21,11 @@ function VideoOverlay() {
         return;
       }
 
-      console.log(message);
-      // push into queue
-      // const m: Message = JSON.parse(message);
-      // this.queue.write(m, new Date().getTime());
+      // TODO: Put a type on this so only something
+      // that is the correct "shape will be parsed"
+      const jsonObj = JSON.parse(message);
+
+      console.log(jsonObj);
     }
   );
 
@@ -40,7 +41,7 @@ function VideoOverlay() {
 }
 
 const InventoryBox = (props: { data: { index: number; data: string } }) => {
-  return <div className="p-8 bg-rose-800">{props.data.index}</div>;
+  return <div className="bg-rose-800 p-8">{props.data.index}</div>;
 };
 
 export default VideoOverlay;
