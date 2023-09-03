@@ -3,7 +3,7 @@ import "./index.css";
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-import VideoOverlay from "../VideoOverlay";
+import VideoOverlay from "./VideoOverlay";
 
 // Authorize extension
 window.Twitch.ext.onAuthorized((auth) => {

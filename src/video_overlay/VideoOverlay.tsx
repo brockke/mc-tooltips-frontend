@@ -28,8 +28,8 @@ function VideoOverlay() {
   );
 
   return (
-    <div className="grid h-screen place-items-center">
-      <div className={`grid grid-cols-${gridRowLength} gap-1`}>
+    <div className="overflow-auto text-center h-screen">
+      <div className={`grid grid-cols-${gridRowLength.toString()} gap-2`}>
         {inventoryData.map((item) => (
           <InventoryBox key={item.index} data={item} />
         ))}
