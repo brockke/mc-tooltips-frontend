@@ -26,7 +26,7 @@ const makeJWT = function () {
 const payload = {
   target: ["broadcast"],
   broadcaster_id: broadcasterId,
-  message: JSON.stringify("POGGERS"),
+  message: JSON.stringify({ index: 15, value: "12312234gfd" }),
 };
 const serialized = JSON.stringify(payload);
 
