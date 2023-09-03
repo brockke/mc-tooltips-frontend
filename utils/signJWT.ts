@@ -1,6 +1,7 @@
-import * as dotenv from "dotenv";
+import * as dotenv from 'dotenv'
 import jwt from "jsonwebtoken";
-dotenv.config();
+
+dotenv.config({ path: '../.env' })
 
 const sharedSecret = process.env.JWT_SECRET;
 const broadcasterId = process.env.JWT_BROADCASTER_ID ?? 0;
@@ -51,4 +52,4 @@ await fetch(`https://api.twitch.tv/helix/extensions/pubsub`, {
     });
 });
 
-export {};
+export { };
